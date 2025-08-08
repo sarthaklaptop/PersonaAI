@@ -46,6 +46,9 @@ export default function ChatBox() {
 
 
   const sendMessage = async () => {
+
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:10000";
+
     if (!input.trim()) return;
 
     const updatedMessages: Message[] = [
@@ -58,7 +61,7 @@ export default function ChatBox() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8000/chat", {
+      const res = await fetch(`${API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: updatedMessages }),
