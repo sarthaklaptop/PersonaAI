@@ -272,11 +272,14 @@ export default function ChatBox() {
         </div>
         
         <div className="flex items-center justify-between mt-3">
-          <button className={`text-sm font-medium transition-colors ${
-            darkMode 
-              ? 'text-blue-400 hover:text-blue-300' 
-              : 'text-blue-600 hover:text-blue-700'
-          }`}>
+          <button 
+            onClick={() => window.location.reload()}
+            className={`text-sm font-medium transition-colors ${
+              darkMode 
+                ? 'text-blue-400 hover:text-blue-300' 
+                : 'text-blue-600 hover:text-blue-700'
+            }`}
+          >
             + New chat
           </button>
           {loading && (
