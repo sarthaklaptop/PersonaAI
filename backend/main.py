@@ -147,7 +147,11 @@ async def chat_endpoint(request: ChatRequest):
 
 """
 
-    messages=[{"role": "system", "content": SYSTEM_PROMPT}] + [msg.dict() for msg in request.messages]
+    incoming_messages = [msg.dict() for msg in request.messages]
+
+    trimmed_messages = incoming_messages[-10:]
+    
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}] + trimmed_messages
 
     try:
         response = client.chat.completions.create(
